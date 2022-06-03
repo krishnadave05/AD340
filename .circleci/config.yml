@@ -96,7 +96,7 @@ jobs:
       - checkout
       - *restore_cache
       - name: Make gradlew executable
-        run: chmod +x ./gradlew
+      - run: chmod +x ./gradlew
       - run:
 
           name: Download dependencies

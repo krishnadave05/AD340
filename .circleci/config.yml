@@ -96,8 +96,11 @@ jobs:
       - checkout
       - *restore_cache
       - run:
+          name: Make gradlew executable
+          run: chmod +x ./gradlew
           name: Download dependencies
           command: ./gradlew androidDependencies
+      -
       - *save_cache
       - *export_gservices_key
       - *decode_gservices_key

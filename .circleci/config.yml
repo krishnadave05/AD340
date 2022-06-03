@@ -95,9 +95,10 @@ jobs:
     steps:
       - checkout
       - *restore_cache
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
       - run:
-          name: Make gradlew executable
-          run: chmod +x ./gradlew
+
           name: Download dependencies
           command: ./gradlew androidDependencies
       -

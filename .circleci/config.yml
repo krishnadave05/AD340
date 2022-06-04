@@ -120,6 +120,9 @@ jobs:
       - checkout
       - *restore_cache
       - run:
+          name: Make gradlew executable
+          command: chmod +x ./gradlew
+      - run:
           name: Download dependencies
           command: ./gradlew androidDependencies
       - *save_cache
@@ -143,6 +146,9 @@ jobs:
     steps:
       - checkout
       - *restore_cache
+      - run:
+          name: Make gradlew executable
+          command: chmod +x ./gradlew
       - run:
           name: Download dependencies
           command: ./gradlew androidDependencies

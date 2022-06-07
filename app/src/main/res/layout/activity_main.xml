@@ -155,10 +155,10 @@
                 android:inputType="phone" />
 
             <Button
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="30dp"
                 android:background="@drawable/btn_round"
                 android:backgroundTint="#1877F2"
                 android:fontFamily="@font/bold_roboto"

@@ -64,4 +64,3 @@ dependencies {
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.10'
 }
-

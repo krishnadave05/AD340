@@ -39,6 +39,16 @@ public class ProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
+//    public ProfileFragment(String full_name, String email_addr, String bio,
+//                           String user_name, String age, String occupation, String mobile) {
+//        tv_name.setText(full_name);
+//        tv_email.setText(email_addr);
+//        tv_bio.setText(bio);
+//        tv_username.setText(user_name);
+//        tv_age.setText(age+" Years");
+//        tv_occupation.setText(occupation);
+//        tv_mobile.setText(mobile);
+//    }
 
     /**
      * Use this factory method to create a new instance of
@@ -65,7 +75,6 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
 
     }
 
@@ -97,9 +106,6 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
-
-
-
 
 
 

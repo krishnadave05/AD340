@@ -5,27 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
+<!--    android:padding="5dp">-->
 
-<!--    android:padding="10dp"-->
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
 
-<!--        android:layout_margin="10dp"-->
-
         <LinearLayout
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/orders_order_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/gilroy_semibold"
                 android:text="Sign Up"
                 android:textColor="#000"
@@ -36,16 +33,14 @@
                 android:id="@+id/order_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/gilroy_medium"
                 android:text="Enter your details to continue." />
 
-
-<!--            android:layout_marginTop="40dp"-->
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/gilroy_medium"
                 android:text="Full Name" />
 
@@ -155,10 +150,10 @@
                 android:inputType="phone" />
 
             <Button
-                android:layout_marginTop="5dp"
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/btn_round"
                 android:backgroundTint="#1877F2"
                 android:fontFamily="@font/bold_roboto"
@@ -171,6 +166,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

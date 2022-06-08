@@ -18,6 +18,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
+
 @RunWith(AndroidJUnit4.class)
 
 public class MainActivityTest {
@@ -39,8 +41,7 @@ public class MainActivityTest {
         onView(withId(R.id.et_occupation)).perform(replaceText("Software Developer"), closeSoftKeyboard());
         onView(withId(R.id.et_mobile)).perform(replaceText("9929988288"), closeSoftKeyboard());
 
-        onView(withId(R.id.btn_register))
-                .perform(scrollTo(), click());
+
 
         onView(withText("krishna111")).check(doesNotExist());
 
@@ -56,8 +57,7 @@ public class MainActivityTest {
         onView(withId(R.id.et_occupation)).perform(replaceText("Software Developer"), closeSoftKeyboard());
         onView(withId(R.id.et_mobile)).perform(replaceText("9929988288"), closeSoftKeyboard());
 
-        onView(withId(R.id.btn_register))
-                .perform(scrollTo(), click());
+
 
         onView(withText("Krishna Dave")).check(doesNotExist());
 

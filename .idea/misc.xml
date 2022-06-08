@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/Desktop/Assignment Submission/Week 4/app/src/main/res/layout/activity_dashboard.xml" value="0.2520833333333333" />
+        <entry key="..\:/Users/Administrator/Desktop/Assignment Submission/Week 4/app/src/main/res/layout/activity_main.xml" value="0.2520833333333333" />
+        <entry key="..\:/Users/Administrator/Desktop/Assignment Submission/Week 4/app/src/main/res/layout/activity_profile.xml" value="0.2520833333333333" />
+        <entry key="..\:/Users/Administrator/Desktop/Assignment Submission/Week 4/app/src/main/res/layout/fragment_matches.xml" value="0.2520833333333333" />
+        <entry key="..\:/Users/Administrator/Desktop/Assignment Submission/Week 4/app/src/main/res/layout/fragment_profile.xml" value="0.2520833333333333" />
+        <entry key="..\:/Users/Administrator/Desktop/Assignment Submission/Week 4/app/src/main/res/layout/fragment_settings.xml" value="0.2520833333333333" />
+        <entry key="..\:/Users/Administrator/Desktop/Assignment Submission/Week 4/app/src/main/res/menu/menu.xml" value="0.2520833333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
       </map>
     </option>
   </component>
@@ -12,12 +19,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.13728470111448834" />
-      </ProjectState>
-    </option>
   </component>
 </project>

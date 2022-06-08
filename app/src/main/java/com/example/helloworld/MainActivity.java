@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please enter all the details!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                 
-                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+
+                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                     intent.putExtra("full_name", et_full_name.getText().toString());
                     intent.putExtra("email_addr", et_email_addr.getText().toString());
                     intent.putExtra("bio", et_bio.getText().toString());

@@ -10,12 +10,16 @@ public class MatchesModel {
     String banner_image_url;
     String uid;
     String liked;
+    String latitude;
+    String longitude;
 
-    public MatchesModel(String title, String banner_image_url, String uid, String liked) {
+    public MatchesModel(String title, String banner_image_url, String uid, String liked, String latitude, String longitude) {
         this.title = title;
         this.banner_image_url = banner_image_url;
         this.uid = uid;
         this.liked = liked;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getTitle() {
@@ -26,11 +30,11 @@ public class MatchesModel {
         this.title = title;
     }
 
-    public String getBanner_image() {
+    public String getBanner_image_url() {
         return banner_image_url;
     }
 
-    public void setBanner_image(String banner_image_url) {
+    public void setBanner_image_url(String banner_image_url) {
         this.banner_image_url = banner_image_url;
     }
 
@@ -48,5 +52,21 @@ public class MatchesModel {
 
     public void setLiked(String liked) {
         this.liked = liked;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }

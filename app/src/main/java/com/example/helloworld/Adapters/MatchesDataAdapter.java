@@ -79,7 +79,7 @@ public class MatchesDataAdapter extends RecyclerView.Adapter<MatchesDataAdapter.
 
         URL url = null;
         try {
-            url = new URL(mArrayList.get(position).getBanner_image());
+            url = new URL(mArrayList.get(position).getBanner_image_url());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

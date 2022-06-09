@@ -6,26 +6,16 @@ import com.example.helloworld.R;
 
 public class MatchesModel {
 
-    int profile_image;
     String title;
-    String sec_title;
-    int banner_image;
-    String desc;
+    String banner_image_url;
+    String uid;
+    String liked;
 
-    public MatchesModel(int profile_image, String title, String sec_title, int banner_image, String desc) {
-        this.profile_image = profile_image;
+    public MatchesModel(String title, String banner_image_url, String uid, String liked) {
         this.title = title;
-        this.sec_title = sec_title;
-        this.banner_image = banner_image;
-        this.desc = desc;
-    }
-
-    public int getProfile_image() {
-        return profile_image;
-    }
-
-    public void setProfile_image(int profile_image) {
-        this.profile_image = profile_image;
+        this.banner_image_url = banner_image_url;
+        this.uid = uid;
+        this.liked = liked;
     }
 
     public String getTitle() {
@@ -36,27 +26,27 @@ public class MatchesModel {
         this.title = title;
     }
 
-    public String getSec_title() {
-        return sec_title;
+    public String getBanner_image() {
+        return banner_image_url;
     }
 
-    public void setSec_title(String sec_title) {
-        this.sec_title = sec_title;
+    public void setBanner_image(String banner_image_url) {
+        this.banner_image_url = banner_image_url;
     }
 
-    public int getBanner_image() {
-        return banner_image;
+    public String getUid() {
+        return uid;
     }
 
-    public void setBanner_image(int banner_image) {
-        this.banner_image = banner_image;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getLiked() {
+        return liked;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setLiked(String liked) {
+        this.liked = liked;
     }
 }

@@ -1,9 +1,12 @@
 package com.example.helloworld.Adapters;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -21,7 +24,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.helloworld.ModelClass.MatchesModel;
 import com.example.helloworld.R;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -41,20 +49,15 @@ public class MatchesDataAdapter extends RecyclerView.Adapter<MatchesDataAdapter.
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        CircleImageView civ_profile;
-        TextView tv_name, tv_Sec_title;
+        TextView tv_name;
         ImageView iv_banner;
-        TextView tv_desc;
         ImageView iv_like;
 
         RecyclerViewHolder(View v) {
             super(v);
 
-            civ_profile = v.findViewById(R.id.civ_profile);
             tv_name = v.findViewById(R.id.tv_name);
-            tv_Sec_title = v.findViewById(R.id.tv_Sec_title);
             iv_banner = v.findViewById(R.id.iv_banner);
-            tv_desc = v.findViewById(R.id.tv_desc);
             iv_like = v.findViewById(R.id.iv_like);
 
         }
@@ -71,11 +74,29 @@ public class MatchesDataAdapter extends RecyclerView.Adapter<MatchesDataAdapter.
     @Override
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
-        holder.civ_profile.setImageResource(mArrayList.get(position).getProfile_image());
         holder.tv_name.setText(mArrayList.get(position).getTitle());
-        holder.tv_Sec_title.setText(mArrayList.get(position).getSec_title());
-        holder.iv_banner.setImageResource(mArrayList.get(position).getBanner_image());
-        holder.tv_desc.setText(mArrayList.get(position).getDesc());
+
+
+        URL url = null;
+        try {
+            url = new URL(mArrayList.get(position).getBanner_image());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        Bitmap bmp = null;
+        try {
+            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        holder.iv_banner.setImageBitmap(bmp);
+
+
+        if (mArrayList.get(position).getLiked().equalsIgnoreCase("true"))
+        {
+            holder.iv_like.setColorFilter(Color.argb(255, 255, 0, 0));
+        }
+
 
         holder.iv_like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +104,12 @@ public class MatchesDataAdapter extends RecyclerView.Adapter<MatchesDataAdapter.
                 Toast.makeText(mContext, "You liked "+mArrayList.get(position).getTitle(), Toast.LENGTH_LONG).show();
 
                 holder.iv_like.setColorFilter(Color.argb(255, 255, 0, 0));
+
+                FirebaseDatabase.getInstance().getReference("matches").child(mArrayList.get(position).getUid()).child("liked")
+                        .setValue(true).addOnSuccessListener(aVoid -> {
+                    Toast.makeText(mContext.getApplicationContext(), "Updated Successfully", Toast.LENGTH_SHORT).show();
+                });
+
             }
         });
     }

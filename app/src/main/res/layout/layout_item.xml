@@ -21,20 +21,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/civ_profile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:src="@drawable/bottom_matches"
-                app:civ_border_color="#ff0000"
-                app:civ_border_width="2dp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -46,38 +36,20 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_Sec_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Secondary Text"
-                    android:textColor="#000000"
-                    android:textSize="12sp" />
-
             </LinearLayout>
 
         </LinearLayout>
 
         <ImageView
             android:id="@+id/iv_banner"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="7dp"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:src="@drawable/bottom_matches"
             android:scaleType="fitXY" />
 
-        <TextView
-            android:id="@+id/tv_desc"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lines="2"
-            android:maxLines="2"
-            android:text="Desc Text Desc Text Desc Text Desc Text Desc Text Desc Text Desc Text Desc Text Desc Text Desc Text"
-            android:textColor="#000000"
-            android:textSize="12sp" />
-
         <ImageView
+            android:layout_marginTop="7dp"
             android:id="@+id/iv_like"
             android:layout_width="25dp"
             android:layout_height="25dp"

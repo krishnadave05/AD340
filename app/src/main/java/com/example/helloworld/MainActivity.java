@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText et_full_name, et_email_addr, et_bio, et_user_name, et_age, et_occupation, et_mobile;
@@ -18,6 +20,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        FirebaseApp.initializeApp(MainActivity.this);
+
+
 
         et_full_name = findViewById(R.id.et_full_name);
         et_email_addr = findViewById(R.id.et_email_addr);

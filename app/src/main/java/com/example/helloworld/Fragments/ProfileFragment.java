@@ -76,6 +76,15 @@ public class ProfileFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+//        tv_name = this.getView().findViewById(R.id.tv_name);
+//        tv_bio = this.getView().findViewById(R.id.tv_bio);
+//        tv_username = this.getView().findViewById(R.id.tv_username);
+//        tv_email = this.getView().findViewById(R.id.tv_email);
+//        tv_mobile = this.getView().findViewById(R.id.tv_mobile);
+//        tv_occupation = this.getView().findViewById(R.id.tv_occupation);
+//        tv_age = this.getView().findViewById(R.id.tv_age);
+//        iv_back = this.getView().findViewById(R.id.iv_back);
+//        iv_back = this.getView().findViewById(R.id.iv_back);
     }
 
     @Override
@@ -99,14 +108,27 @@ public class ProfileFragment extends Fragment {
             tv_bio.setText(data.getString("email_addr"));
             tv_username.setText(data.getString("bio"));
             tv_email.setText(data.getString("user_name"));
-            tv_mobile.setText(data.getString("age")+" Years");
+            tv_age.setText(data.getString("age")+" Years");
             tv_occupation.setText(data.getString("occupation"));
-            tv_age.setText(data.getString("mobile"));
+            tv_mobile.setText(data.getString("mobile"));
         }
 
         return view;
     }
 
 
+
+
+
+//    public void updateData(String full_name, String email_addr, String bio,
+//                           String user_name, String age, String occupation, String mobile) {
+//        tv_name.setText(full_name);
+//        tv_email.setText(email_addr);
+//        tv_bio.setText(bio);
+//        tv_username.setText(user_name);
+//        tv_age.setText(age+" Years");
+//        tv_occupation.setText(occupation);
+//        tv_mobile.setText(mobile);
+//    }
 
 }

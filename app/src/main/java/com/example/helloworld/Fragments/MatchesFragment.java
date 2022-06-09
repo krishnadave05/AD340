@@ -1,19 +1,30 @@
 package com.example.helloworld.Fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helloworld.Adapters.MatchesDataAdapter;
+import com.example.helloworld.MainActivity;
 import com.example.helloworld.ModelClass.MatchesModel;
 import com.example.helloworld.R;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +36,9 @@ public class MatchesFragment extends Fragment {
     private RecyclerView recycler_view;
 
     public ArrayList<MatchesModel> matchesModelArrayList;
+    MatchesDataAdapter adp;
+
+    private ProgressDialog progressDialog;
 
 
 
@@ -78,28 +92,66 @@ public class MatchesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_matches, container, false);
 
 
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setMessage("Your data is being loaded.");
+        progressDialog.setCanceledOnTouchOutside(false);
+
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+
+        FirebaseApp.initializeApp(getActivity());
+
+
         recycler_view = (RecyclerView) view.findViewById(R.id.recycler_view);
 
         matchesModelArrayList = new ArrayList<>();
 
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_8, "Krishna Dave", "artist", R.drawable.banner_8, "So many of my smiles are because of you."));
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_9, "Pratik D", "astronaut", R.drawable.banner_9, "So grateful to be sharing my world with you."));
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_10, "Dharmesh G", "chef", R.drawable.banner_10, "No description is required at all."));
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_1, "Dhara P", "construction ", R.drawable.banner_1, "All your dreams can come true and I'll make sure of it."));
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_2, "Pranchi D", "firefighter", R.drawable.banner_2, "Live in the sunshine where you belong."));
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_3, "Kajal R", "doctor ", R.drawable.banner_3, "My life is better than my daydreams."));
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_4, "Masti Pande", "police", R.drawable.banner_4, "Sprinkling kindness everywhere I go."));
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_5, "Pink K", "firefighter", R.drawable.banner_5, "I love my followers more than life itself."));
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_6, "Minal G", "police", R.drawable.banner_6, "I am cool. As usual you know..."));
-        matchesModelArrayList.add(new MatchesModel(R.drawable.profile_7, "Hasti H", "teacher", R.drawable.banner_7, "My life is better than my daydreams."));
-
         recycler_view.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
-        MatchesDataAdapter adp =
-                new MatchesDataAdapter(getActivity(), matchesModelArrayList);
+        adp = new MatchesDataAdapter(getActivity(), matchesModelArrayList);
         recycler_view.setAdapter(adp);
 
+        getUsersFromDb();
 
         return view;
     }
+
+    private void getUsersFromDb() {
+
+        progressDialog.show();
+
+        FirebaseDatabase.getInstance().getReference("matches").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    HashMap<String, HashMap<String, String>> hashMap = (HashMap<String, HashMap<String, String>>) snapshot.getValue();
+                    HashMap<String, String> child;
+                    for (int i = 0; i < hashMap.size(); i++) {
+                        child = hashMap.get(hashMap.keySet().toArray()[i]);
+
+                        matchesModelArrayList.add(new MatchesModel(child.get("name"), child.get("imageUrl"),
+                                child.get("uid"), String.valueOf(child.get("liked"))));
+
+                        adp.notifyDataSetChanged();
+
+                        progressDialog.cancel();
+
+                    }
+                } catch (Exception exception) {
+                    Toast.makeText(getContext(), "Error 1: "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+                    progressDialog.cancel();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Error 2: "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.cancel();
+            }
+        });
+    }
+
 }
